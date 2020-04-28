@@ -8,6 +8,8 @@ import App from 'app';
 // static base styles
 import 'normalize.css';
 
+const root = document.getElementById('root');
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <GlobalStyle />
@@ -15,5 +17,5 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </ThemeProvider>,
-  document.getElementById('root')
+  root
 );

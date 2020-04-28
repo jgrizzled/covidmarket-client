@@ -11,9 +11,6 @@ export default createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; 
     background-color: ${props => props.theme.color.background};
     font-family: -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen",
@@ -23,7 +20,6 @@ export default createGlobalStyle`
   }
 
   body > div {
-    height: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
