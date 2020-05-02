@@ -1,3 +1,5 @@
+// Backend API fetchers
+
 import { API_URL } from 'config';
 import moment from 'moment-timezone';
 
@@ -35,7 +37,7 @@ export const fetchCOVIDdata = async () => {
       date
     };
   });
-}
+};
 
 export const fetchMarketData = async market => {
   const data = await Promise.all(
@@ -50,9 +52,9 @@ export const fetchMarketData = async market => {
 
   // convert dates and total return to %
   return historicalCrashes.map((c, i) => {
-    const startDate = moment.tz(c.start, 'America/New_York')
-    return { 
-      name: c.name, 
+    const startDate = moment.tz(c.start, 'America/New_York');
+    return {
+      name: c.name,
       startDate,
       data: data[i].map(day => {
         const date = moment.tz(day.date, 'America/New_York');
@@ -62,8 +64,8 @@ export const fetchMarketData = async market => {
           day: date.diff(startDate, 'days')
         };
       })
-    }
-  })
+    };
+  });
 };
 
 const fetchTimeseries = async (type, start, end) => {

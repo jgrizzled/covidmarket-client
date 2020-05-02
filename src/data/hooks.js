@@ -1,3 +1,5 @@
+// Backend API data hooks
+
 import createResource from './create-resource';
 import { fetchMarketData, fetchCOVIDdata } from './api';
 

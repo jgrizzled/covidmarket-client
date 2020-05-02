@@ -1,3 +1,9 @@
+/*
+  Fetcher for React Suspense
+  Wrap component in Suspense:  <Suspense fallback={fallbackComponent}><Component /></Suspense>
+  Usage:
+  const myData = createResource(fetchMyData()).read()
+*/
 export default function createResource(promise) {
   let status = 'loading';
   let result;
