@@ -14,16 +14,15 @@ export default function ButtonSelector({
   return (
     <Container length={options.length}>
       {options.map((o, i) => (
-        <span>
+        <span key={i}>
           <input
             id={id + i}
             type='radio'
             name={id + 'option'}
-            key={i}
             checked={o.value === activeOptionValue}
-            onClick={() => setOptionValue(o.value)}
+            onChange={() => setOptionValue(o.value)}
           />
-          <label for={id + i}>{o.name}</label>
+          <label htmlFor={id + i}>{o.name}</label>
         </span>
       ))}
     </Container>

@@ -27,6 +27,20 @@ const LineChart = ({
       padding={{ top: 0, left: 0, bottom: 50, right: 50 }}
       domain={{ x: domainX, y: domainY }}
       standalone={false}
+      theme={{
+        axis: {
+          style: {
+            grid: {
+              stroke: '#cccccc',
+              strokeDasharray: '10,5',
+              fillOpacity: 0.1
+            },
+            axis: {
+              fill: 'none'
+            }
+          }
+        }
+      }}
     >
       {chartDatas.map((cd, i) => (
         <VictoryLine data={cd.data} x='x' y='y' key={i} style={cd.style} />

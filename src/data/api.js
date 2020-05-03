@@ -1,29 +1,27 @@
 // Backend API fetchers
 
-import { API_URL } from 'config';
+import {
+  API_URL,
+  COVIDrecessionStartDate,
+  historicalCrashes,
+  numYrs
+} from 'config';
 import moment from 'moment-timezone';
 
-export const COVIDrecessionStartDate = '20200220';
-
-const historicalCrashes = [
-  { name: 'Great Depression', start: '1929-09-17' },
-  { name: '1970s Recession', start: '1973-01-12' },
-  { name: 'Dotcom Bubble', start: '2000-03-24' },
-  { name: 'Great Recession', start: '2007-10-10' },
-  { name: 'COVID Recession', start: COVIDrecessionStartDate }
-];
-
-const numYrs = 3; // time span to get for historical crashes
-
 export const fetchCOVIDdata = async () => {
-  const data = await fetchTimeseries(
-    'covid',
-    COVIDrecessionStartDate,
-    formatDate(new Date(), 'UTC')
+  const response = await fetch(
+    `${API_URL}/covid/${formatDate(
+      COVIDrecessionStartDate,
+      'UTC'
+    )}/${formatDate(new Date(), 'UTC')}`
   );
+  if (!response.ok)
+    throw new Error(`${response.status}: ${response.statusText}`);
+  const json = await response.json();
+  if (json.error) throw new Error(json.error);
 
   // convert dates and calc active cases
-  return data.map(d => {
+  return json.data.map(d => {
     const date = moment.tz(d.date, 'UTC');
     return {
       world: {
@@ -42,7 +40,7 @@ export const fetchCOVIDdata = async () => {
 export const fetchMarketData = async market => {
   const data = await Promise.all(
     historicalCrashes.map(c =>
-      fetchTimeseries(
+      fetchTotalReturns(
         market,
         formatDate(c.start, 'America/New_York'),
         getEnd(c.start)
@@ -51,25 +49,29 @@ export const fetchMarketData = async market => {
   );
 
   // convert dates and total return to %
-  return historicalCrashes.map((c, i) => {
-    const startDate = moment.tz(c.start, 'America/New_York');
-    return {
-      name: c.name,
-      startDate,
-      data: data[i].map(day => {
-        const date = moment.tz(day.date, 'America/New_York');
-        return {
-          totalReturn: day.totalReturn * 100,
-          date,
-          day: date.diff(startDate, 'days')
-        };
-      })
-    };
-  });
+  return historicalCrashes
+    .map((c, i) => {
+      const startDate = moment.tz(c.start, 'America/New_York');
+      return {
+        name: c.name,
+        startDate,
+        data: data[i].map(day => {
+          const date = moment.tz(day.date, 'America/New_York');
+          return {
+            totalReturn: day.totalReturn * 100,
+            date,
+            day: date.diff(startDate, 'days')
+          };
+        })
+      };
+    })
+    .filter(hc => hc.data.length > 0);
 };
 
-const fetchTimeseries = async (type, start, end) => {
-  const response = await fetch(`${API_URL}/timeseries/${type}/${start}/${end}`);
+const fetchTotalReturns = async (type, start, end) => {
+  const response = await fetch(
+    `${API_URL}/totalreturns/${type}/${start}/${end}`
+  );
   if (!response.ok)
     throw new Error(`${response.status}: ${response.statusText}`);
   const data = await response.json();
