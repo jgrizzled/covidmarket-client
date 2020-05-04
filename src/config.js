@@ -1,7 +1,5 @@
 const COVIDrecessionStartDate = '2020-02-20';
 
-console.log(process.env.REACT_APP_API_URL);
-
 module.exports = {
   API_URL: process.env.REACT_APP_API_URL || 'http://localhost:8000',
   COVIDrecessionStartDate,
