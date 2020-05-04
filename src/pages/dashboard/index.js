@@ -98,7 +98,7 @@ export default function Dashboard() {
 const Loading = () => <b style={{ height: '100%' }}>Loading...</b>;
 
 const Container = styled.div`
-  min-height: ${() => Math.max(500, window.innerHeight - 15)}px;
+  min-height: ${() => Math.max(500, window.innerHeight - 30)}px;
   display: grid;
   grid-template-rows: auto 1fr 1fr;
   grid-template-areas:

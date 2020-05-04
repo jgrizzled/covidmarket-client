@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import randomColor from 'randomcolor';
+import React, { useMemo, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 import Chart from 'charts/line-chart';
 import { useCOVIDdata } from 'data/hooks';
@@ -15,6 +15,7 @@ export default function COVIDchart({
   COVIDdataOption,
   COVIDdataType
 }) {
+  const theme = useContext(ThemeContext);
   const COVIDdata = useCOVIDdata().read();
 
   const startDateTime = startDate.getTime();
@@ -30,7 +31,8 @@ export default function COVIDchart({
       name: g.name,
       style: {
         data: {
-          stroke: colors[i]
+          stroke: theme.color.chart[theme.color.chart.length - 1 - i],
+          strokeWidth: 3
         }
       }
     }));
@@ -78,7 +80,3 @@ export default function COVIDchart({
     />
   );
 }
-
-const colors = Array(10)
-  .fill(0)
-  .map(_ => randomColor());

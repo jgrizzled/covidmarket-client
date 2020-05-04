@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
-import randomColor from 'randomcolor';
+import React, { useMemo, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 import Chart from 'charts/line-chart';
 import { useMarketData } from 'data/hooks';
 
 export default function MarketsChart({ startDay, endDay, marketDataOption }) {
+  const theme = useContext(ThemeContext);
   const marketData = useMarketData(marketDataOption).read();
 
   const { min, max, marketChartDatas } = useMemo(() => {
@@ -16,7 +17,9 @@ export default function MarketsChart({ startDay, endDay, marketDataOption }) {
         name: `${h.name} (${h.data[0].date.format('MMM DD YYYY')})`,
         style: {
           data: {
-            stroke: colors[i],
+            stroke: h.name.includes('COVID')
+              ? theme.color.primary
+              : theme.color.chart[i],
             strokeDasharray: h.name.includes('COVID') ? undefined : '1,1',
             strokeWidth: h.name.includes('COVID') ? 3 : 2
           }
@@ -56,7 +59,3 @@ export default function MarketsChart({ startDay, endDay, marketDataOption }) {
     />
   );
 }
-
-const colors = Array(10)
-  .fill(0)
-  .map(_ => randomColor());

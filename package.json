@@ -20,6 +20,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
+    "react-use": "^14.2.0",
     "react-use-dimensions": "^1.2.1",
     "styled-components": "^5.1.0",
     "uuid": "^7.0.3",
@@ -29,7 +30,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve build",
+    "deploy": "now --prod",
+    "predeploy": "yarn audit-filtered",
+    "audit-filtered": "bash -c 'yarn audit --level high; [[ $? -ge 8 ]] && exit 1 || exit 0'"
   },
   "eslintConfig": {
     "extends": "react-app"
