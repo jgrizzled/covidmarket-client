@@ -42,7 +42,7 @@ const HeaderLink = ({ l }) => {
 
 const links = [
   { route: '/', icon: '📈', name: 'Dashboard' },
-  { route: '/about', icon: '🤔', name: 'About' },
+  { route: '/about', icon: '❓', name: 'About' },
   { route: '/contact', icon: '📩', name: 'Contact' }
 ];
 

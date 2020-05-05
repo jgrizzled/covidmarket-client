@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import styled from 'styled-components';
 
-import ButtonSelector from 'common/button-selector';
+import ButtonSelector from './button-selector';
 import MarketsChart from './markets-chart';
 import COVIDchart from './covid-chart';
 import {
@@ -98,6 +98,8 @@ export default function Dashboard() {
 const Loading = () => <b style={{ height: '100%' }}>Loading...</b>;
 
 const Container = styled.div`
+  background-color: ${({ theme }) => theme.color.surface};
+  color: ${({ theme }) => theme.color.onSurface};
   min-height: ${() => Math.max(500, window.innerHeight - 30)}px;
   display: grid;
   grid-template-rows: auto 1fr 1fr;

@@ -5,7 +5,7 @@ import Chart from 'charts/line-chart';
 import { useCOVIDdata } from 'data/hooks';
 
 const geos = [
-  { name: 'World', value: 'world' },
+  { name: 'World ex-US', value: 'worldExUS' },
   { name: 'US', value: 'US' }
 ];
 

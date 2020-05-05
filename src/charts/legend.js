@@ -46,7 +46,9 @@ flex-wrap: wrap;
 margin: 0;
 list-style: none;
 padding: 0;
-background-color: rgba(255,255,255,0.8);
+background-color: ${({ theme }) => theme.color.background};
+color: ${({ theme }) => theme.color.onBackgroundLight};
+opacity: 0.9;
 border-radius: 10px;
 ${({ legendX }) =>
   legendX === 'right' && 'justify-content: flex-end; right: 50px;'}

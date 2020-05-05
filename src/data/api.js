@@ -24,14 +24,7 @@ export const fetchCOVIDdata = async () => {
   return json.data.map(d => {
     const date = moment.tz(d.date, 'UTC');
     return {
-      world: {
-        ...d.world,
-        active: d.world.cases - d.world.recovered - d.world.deaths
-      },
-      US: {
-        ...d.US,
-        active: d.US.cases - d.US.recovered - d.US.deaths
-      },
+      ...d,
       date
     };
   });

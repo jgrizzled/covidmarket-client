@@ -38,19 +38,22 @@ const Container = styled.span`
     width: 0;
   }
   label {
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.onBackground};
     cursor: pointer;
     width: 100%;
     text-align: center;
     display: inline-block;
     padding: 10px;
     margin: 0;
-    border: 1px solid black;
+    border: 1px solid ${({ theme }) => theme.color.onBackground};
     user-select: none;
   }
   label:not(:first-child) {
     border-left: 0;
   }
   input:checked + label {
+    color: ${({ theme }) => theme.color.onBackgroundLight};
     font-weight: bold;
   }
 `;
