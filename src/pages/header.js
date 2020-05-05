@@ -18,7 +18,7 @@ export default function Header() {
                 <HeaderLink l={l} />
               </Link>
             ) : (
-              <HeaderLink l={l} />
+              <HeaderLink l={l} active={true} />
             )}
           </span>
         ))}
@@ -27,18 +27,27 @@ export default function Header() {
   );
 }
 
-const HeaderLink = ({ l }) => {
+const HeaderLink = ({ l, active }) => {
   const theme = useContext(ThemeContext);
   const isNotMobile = useMedia(`(min-width: ${theme.breakpoint.desktop})`);
   return (
     <>
-      <span role='img' aria-label={l.route.replace('/', '')}>
+      <Icon active={active} aria-label={l.route.replace('/', '')}>
         {l.icon}
-      </span>
+      </Icon>
       {isNotMobile && l.name}
     </>
   );
 };
+
+const Icon = styled.span.attrs({ role: 'img' })`
+  border-radius: 5px;
+  padding: 4px 4px 4px 8px;
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    background-color: ${({ theme, active }) =>
+      active ? theme.color.primary : theme.color.primaryDark};
+  }
+`;
 
 const links = [
   { route: '/', icon: '📈', name: 'Dashboard' },
@@ -49,25 +58,34 @@ const links = [
 const Container = styled.header`
   background-color: ${({ theme }) => theme.color.surface};
   color: ${({ theme }) => theme.color.onSurface};
-
   display: flex;
   justify-content: space-between;
+  font-size: 1.1rem;
   h1 {
+    display: flex;
+    align-items: center;
+    color: ${({ theme }) => theme.color.primary};
     font-size: 1.2rem;
-    margin: 0;
+    margin: 0 10px;
+    text-align: center;
+    height: 100%;
   }
   a,
   a:visited {
-    color: ${({ theme }) => theme.color.primary};
-    font-size: 1.1rem;
+    color: ${({ theme }) => theme.color.onBackground};
   }
   nav {
     display: flex;
     > span {
-      background-color: ${({ theme }) => theme.color.primaryDark};
-      border-radius: 10px;
-      padding: 4px;
-      margin: 0 10px;
+      color: ${({ theme }) => theme.color.onBackgroundLight};
+      padding: 6px;
+      @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+        padding: 0 4px 0 20px;
+        margin: 4px 10px;
+        &:not(:first-child) {
+          border-left: 1px solid ${({ theme }) => theme.color.onBackground};
+        }
+      }
     }
   }
 `;

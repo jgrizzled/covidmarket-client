@@ -77,13 +77,13 @@ export default function Dashboard() {
           />
         </Suspense>
         <div>
-          <button
+          <ToggleButton
             onClick={() =>
               setCOVIDdataType(COVIDdataType === 'TOTAL' ? 'NEW' : 'TOTAL')
             }
           >
             {COVIDdataType}
-          </button>
+          </ToggleButton>
           <ButtonSelector
             options={COVIDdataOptions}
             activeOptionValue={COVIDdataOption}
@@ -100,7 +100,7 @@ const Loading = () => <b style={{ height: '100%' }}>Loading...</b>;
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.surface};
   color: ${({ theme }) => theme.color.onSurface};
-  min-height: ${() => Math.max(500, window.innerHeight - 30)}px;
+  min-height: ${() => Math.max(500, window.innerHeight - 40)}px;
   display: grid;
   grid-template-rows: auto 1fr 1fr;
   grid-template-areas:
@@ -127,6 +127,15 @@ const ChartGroup2 = styled.div`
     display: grid;
     grid-template-columns: 10% auto;
   }
+`;
+
+const ToggleButton = styled.button`
+  background-color: ${({ theme }) => theme.color.background};
+  color: ${({ theme }) => theme.color.onBackgroundLight};
+  font-weight: bold;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid ${({ theme }) => theme.color.onBackground};
 `;
 
 const msPerDay = 1000 * 60 * 60 * 24;
