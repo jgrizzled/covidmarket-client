@@ -1,31 +1,24 @@
-import React, { useMemo, useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import React, { useMemo } from 'react';
 
 import Chart from 'charts/line-chart';
 import { useMarketData } from 'data/hooks';
 
 export default function MarketsChart({ startDay, endDay, marketDataOption }) {
-  const theme = useContext(ThemeContext);
   const marketData = useMarketData(marketDataOption).read();
 
   const { min, max, marketChartDatas } = useMemo(() => {
     // convert market data to chartData format
-    const marketChartDatas = marketData.map((h, i) => {
-      if (h.data.length < 1) return {};
-      return {
-        data: h.data.map(d => ({ x: d.day, y: d.totalReturn })),
-        name: `${h.name} (${h.data[0].date.format('MMM DD YYYY')})`,
-        style: {
-          data: {
-            stroke: h.name.includes('COVID')
-              ? theme.color.primary
-              : theme.color.chart[i],
-            strokeDasharray: h.name.includes('COVID') ? undefined : '1,1',
-            strokeWidth: h.name.includes('COVID') ? 3 : 2
-          }
+    const marketChartDatas = marketData.map(h => ({
+      data: h.data.map(d => ({ x: d.day, y: d.totalReturn })),
+      name: `${h.name} (${h.data[0].date.format('MMM DD YYYY')})`,
+      style: {
+        data: {
+          stroke: h.color,
+          strokeDasharray: h.name.includes('COVID') ? undefined : '1,1',
+          strokeWidth: h.name.includes('COVID') ? 3 : 2
         }
-      };
-    });
+      }
+    }));
 
     // calc y domain
     const values = marketChartDatas.reduce(

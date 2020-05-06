@@ -31,7 +31,7 @@ export default function COVIDchart({
       name: g.name,
       style: {
         data: {
-          stroke: theme.color.chart[theme.color.chart.length - 1 - i],
+          stroke: theme.color.chart[i],
           strokeWidth: 3
         }
       }

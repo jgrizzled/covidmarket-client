@@ -47,6 +47,7 @@ export const fetchMarketData = async market => {
       const startDate = moment.tz(c.start, 'America/New_York');
       return {
         name: c.name,
+        color: c.color,
         startDate,
         data: data[i].map(day => {
           const date = moment.tz(day.date, 'America/New_York');

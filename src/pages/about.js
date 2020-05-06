@@ -10,8 +10,8 @@ export default function About() {
         <p>
           The first chart displays investment performance during past recessions
           and the current recession for four common types of assets: US stocks,
-          US government bonds, gold, and the US dollar. The second chart
-          displays case data for the COVID-19 pandemic.
+          US bonds, gold, and the US dollar. The second chart displays case data
+          for the COVID-19 pandemic.
         </p>
       </section>
       <section>
@@ -84,7 +84,7 @@ export default function About() {
           >
             ^GSPC
           </a>
-          . Present day data is calculated from the{' '}
+          data set. Present day data is calculated from the{' '}
           <a
             href='https://finance.yahoo.com/quote/SPY'
             target='_blank'
@@ -122,7 +122,7 @@ export default function About() {
           >
             Bloomberg Barclays Intermediate US Bond Index
           </a>
-          . Present data is based on{' '}
+          . Present data is based on the{' '}
           <a
             href='https://finance.yahoo.com/quote/GVI'
             target='_blank'
@@ -144,7 +144,7 @@ export default function About() {
           >
             London Bullion Market
           </a>
-          . Present data is based on{' '}
+          . Present data is based on the{' '}
           <a
             href='https://finance.yahoo.com/quote/GLD'
             target='_blank'
@@ -176,7 +176,7 @@ export default function About() {
           >
             FRED USDX data
           </a>
-          . Present data is based on{' '}
+          . Present data is based on the{' '}
           <a
             href='https://finance.yahoo.com/quote/UUP'
             target='_blank'

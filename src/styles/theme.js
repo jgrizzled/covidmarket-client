@@ -2,15 +2,7 @@ export default {
   color: {
     primary: '#FE8200',
     primaryDark: '#594934',
-    chart: [
-      '#3586C9',
-      '#4952A2',
-      '#EA5994',
-      '#E263EA',
-      '#2FE1E2',
-      '#F37C97',
-      '#AEAEAE'
-    ],
+    chart: ['#7D6DCE', '#E263EA', '#F37C97', '#AEAEAE'],
     background: '#424242',
     surface: '#303030',
     onBackground: '#8B8B8B',

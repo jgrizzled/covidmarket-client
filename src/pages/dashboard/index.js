@@ -100,7 +100,7 @@ const Loading = () => <b style={{ height: '100%' }}>Loading...</b>;
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.surface};
   color: ${({ theme }) => theme.color.onSurface};
-  min-height: ${() => Math.max(500, window.innerHeight - 40)}px;
+  min-height: ${() => Math.max(500, window.innerHeight - 32)}px;
   display: grid;
   grid-template-rows: auto 1fr 1fr;
   grid-template-areas:
@@ -125,7 +125,7 @@ const ChartGroup2 = styled.div`
   grid-template-rows: 1fr auto;
   div:last-child {
     display: grid;
-    grid-template-columns: 10% auto;
+    grid-template-columns: 1fr 3fr;
   }
 `;
 

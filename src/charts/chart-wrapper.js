@@ -26,16 +26,10 @@ export default function chartWrapper(ChartComponent) {
     }, []);
 
     const { width, height } = dimensions;
+
     return (
       <Container ref={containerRef} maxHeight={props.maxHeight}>
-        <svg
-          width='100%'
-          height='100%'
-          viewBox={`0 0 ${width} ${height}`}
-          preserveAspectRatio='none'
-        >
-          <ChartComponent {...props} width={width} height={height} />
-        </svg>
+        <ChartComponent {...props} width={width} height={height} />
         <Legend
           chartDatas={props.chartDatas}
           legendX={props.legendX}

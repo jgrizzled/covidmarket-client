@@ -6,11 +6,15 @@ module.exports = {
   COVIDrecessionStartDate,
   historicalCrashes: [
     // start on stock market previous high
-    { name: 'Great Depression', start: '1929-09-17' },
-    { name: '1970s Recession', start: '1973-01-12' },
-    { name: 'Dotcom Bubble', start: '2000-03-24' },
-    { name: 'Great Recession', start: '2007-10-10' },
-    { name: 'COVID Recession', start: COVIDrecessionStartDate }
+    { name: 'Great Depression', start: '1929-09-17', color: '#3586C9' },
+    { name: '1970s Recession', start: '1973-01-12', color: '#7f85bd' },
+    { name: 'Dotcom Bubble', start: '2000-03-24', color: '#EA5994' },
+    { name: 'Great Recession', start: '2007-10-10', color: '#2FE1E2' },
+    {
+      name: 'COVID Recession',
+      start: COVIDrecessionStartDate,
+      color: '#FE8200'
+    }
   ],
   numYrs,
   zoomOptions: [

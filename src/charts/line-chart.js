@@ -1,7 +1,13 @@
 // Line Chart
 
 import React, { useContext } from 'react';
-import { VictoryChart, VictoryLine, VictoryAxis, LineSegment } from 'victory';
+import {
+  VictoryChart,
+  VictoryLine,
+  VictoryAxis,
+  LineSegment,
+  VictoryVoronoiContainer
+} from 'victory';
 import { ThemeContext } from 'styled-components';
 
 import chartWrapper from './chart-wrapper';
@@ -28,7 +34,14 @@ const LineChart = ({
       scale={{ x: scaleX, y: scaleY }}
       padding={{ top: 0, left: 0, bottom: 20, right: 30 }}
       domain={{ x: domainX, y: domainY }}
-      standalone={false}
+      standalone={true}
+      containerComponent={
+        <VictoryVoronoiContainer
+          responsive={false}
+          width={width}
+          height={height}
+        />
+      }
       theme={{
         axis: {
           style: {
