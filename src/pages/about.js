@@ -84,7 +84,7 @@ export default function About() {
           >
             ^GSPC
           </a>
-          data set. Present day data is calculated from the{' '}
+          &nbsp;data set. Present day data is calculated from the{' '}
           <a
             href='https://finance.yahoo.com/quote/SPY'
             target='_blank'

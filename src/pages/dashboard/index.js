@@ -51,6 +51,7 @@ export default function Dashboard() {
           options={zoomOptions}
           activeOptionValue={zoom}
           setOptionValue={setZoom}
+          tooltip='Select Zoom'
         />
       </Header>
       <ChartGroup1>
@@ -65,6 +66,7 @@ export default function Dashboard() {
           options={marketDataOptions}
           activeOptionValue={marketDataOption}
           setOptionValue={setMarketDataOption}
+          tooltip='Select Asset Class'
         />
       </ChartGroup1>
       <ChartGroup2>
@@ -78,6 +80,7 @@ export default function Dashboard() {
         </Suspense>
         <div>
           <ToggleButton
+            title='Select COVID Case Data'
             onClick={() =>
               setCOVIDdataType(COVIDdataType === 'TOTAL' ? 'NEW' : 'TOTAL')
             }
@@ -88,6 +91,7 @@ export default function Dashboard() {
             options={COVIDdataOptions}
             activeOptionValue={COVIDdataOption}
             setOptionValue={setCOVIDdataOption}
+            tooltip='Toggle new/total COVID data'
           />
         </div>
       </ChartGroup2>

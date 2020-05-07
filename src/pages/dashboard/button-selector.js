@@ -8,7 +8,8 @@ import { v4 as uuid } from 'uuid';
 export default function ButtonSelector({
   options,
   activeOptionValue,
-  setOptionValue
+  setOptionValue,
+  tooltip
 }) {
   const [id] = useState(() => uuid());
   return (
@@ -22,7 +23,9 @@ export default function ButtonSelector({
             checked={o.value === activeOptionValue}
             onChange={() => setOptionValue(o.value)}
           />
-          <label htmlFor={id + i}>{o.name}</label>
+          <label title={tooltip} htmlFor={id + i}>
+            {o.name}
+          </label>
         </span>
       ))}
     </Container>
