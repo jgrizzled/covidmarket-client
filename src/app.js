@@ -9,6 +9,7 @@ import About from 'pages/about';
 import Contact from 'pages/contact';
 import Header from 'pages/header';
 import SplashPage from 'pages/splash';
+import ErrorBoundary from 'error-boundary';
 
 export default function App() {
   return (
@@ -23,7 +24,9 @@ export default function App() {
           <Contact />
         </Route>
         <Route>
-          <Dashboard />
+          <ErrorBoundary>
+            <Dashboard />
+          </ErrorBoundary>
         </Route>
       </Switch>
     </Container>

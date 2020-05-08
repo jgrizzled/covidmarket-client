@@ -40,7 +40,7 @@ export default function MarketsChart({ startDay, endDay, marketDataOption }) {
   return (
     <Chart
       chartDatas={marketChartDatas}
-      labelX='Day'
+      tickFormatX={t => t + 'd'}
       tickFormatY={t => t + '%'}
       scaleX='linear'
       legendX='right'

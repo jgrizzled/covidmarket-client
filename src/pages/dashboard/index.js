@@ -1,9 +1,11 @@
-import React, { useState, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
+import useLocalStorageState from 'use-local-storage-state';
 
 import ButtonSelector from './button-selector';
 import MarketsChart from './markets-chart';
 import COVIDchart from './covid-chart';
+import LoadingSpinner from './loading-spinner';
 import {
   zoomOptions,
   COVIDdataOptions,
@@ -13,14 +15,19 @@ import {
 } from 'config';
 
 export default function Dashboard() {
-  const [zoom, setZoom] = useState(zoomOptions[0].value);
-  const [marketDataOption, setMarketDataOption] = useState(
+  const [zoom, setZoom] = useLocalStorageState('zoom', zoomOptions[0].value);
+  const [marketDataOption, setMarketDataOption] = useLocalStorageState(
+    'marketDataOption',
     marketDataOptions[0].value
   );
-  const [COVIDdataOption, setCOVIDdataOption] = useState(
+  const [COVIDdataOption, setCOVIDdataOption] = useLocalStorageState(
+    'COVIDdataOption',
     COVIDdataOptions[0].value
   );
-  const [COVIDdataType, setCOVIDdataType] = useState('TOTAL');
+  const [COVIDdataType, setCOVIDdataType] = useLocalStorageState(
+    'COVIDdataType',
+    'TOTAL'
+  );
 
   // calc zoom windows
   let endDate = new Date();
@@ -55,7 +62,13 @@ export default function Dashboard() {
         />
       </Header>
       <ChartGroup1>
-        <Suspense fallback={<Loading />}>
+        <Suspense
+          fallback={
+            <Loading>
+              <LoadingSpinner />
+            </Loading>
+          }
+        >
           <MarketsChart
             startDay={startDay}
             endDay={endDay}
@@ -70,7 +83,13 @@ export default function Dashboard() {
         />
       </ChartGroup1>
       <ChartGroup2>
-        <Suspense fallback={<Loading />}>
+        <Suspense
+          fallback={
+            <Loading>
+              <LoadingSpinner />
+            </Loading>
+          }
+        >
           <COVIDchart
             startDate={startDate}
             endDate={endDate}
@@ -99,8 +118,6 @@ export default function Dashboard() {
   );
 }
 
-const Loading = () => <b style={{ height: '100%' }}>Loading...</b>;
-
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.surface};
   color: ${({ theme }) => theme.color.onSurface};
@@ -127,7 +144,7 @@ const ChartGroup2 = styled.div`
   grid-area: chart2;
   display: grid;
   grid-template-rows: 1fr auto;
-  div:last-child {
+  > div:last-child {
     display: grid;
     grid-template-columns: 1fr 3fr;
   }
@@ -139,7 +156,15 @@ const ToggleButton = styled.button`
   font-weight: bold;
   padding: 10px;
   margin: 0;
-  border: 1px solid ${({ theme }) => theme.color.onBackground};
+  border: 0;
+  border-right: 1px solid ${({ theme }) => theme.color.onBackground};
+`;
+
+const Loading = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const msPerDay = 1000 * 60 * 60 * 24;

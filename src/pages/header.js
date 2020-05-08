@@ -56,6 +56,7 @@ const links = [
 ];
 
 const Container = styled.header`
+  height: 32px;
   background-color: ${({ theme }) => theme.color.surface};
   color: ${({ theme }) => theme.color.onSurface};
   display: flex;
@@ -82,9 +83,6 @@ const Container = styled.header`
       @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
         padding: 0 4px 0 20px;
         margin: 4px 10px;
-        &:not(:first-child) {
-          border-left: 1px solid ${({ theme }) => theme.color.onBackground};
-        }
       }
     }
   }

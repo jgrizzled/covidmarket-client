@@ -42,6 +42,7 @@ export default function chartWrapper(ChartComponent) {
 }
 
 const Container = styled.div`
+  margin-right: 5px;
   height: 100%;
   max-height: ${({ maxHeight }) => maxHeight}px;
   overflow: hidden;

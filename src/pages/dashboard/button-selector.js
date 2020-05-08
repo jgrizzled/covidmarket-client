@@ -39,6 +39,7 @@ const Container = styled.span`
     opacity: 0;
     position: fixed;
     width: 0;
+    height: 0;
   }
   label {
     background-color: ${({ theme }) => theme.color.background};
@@ -49,11 +50,13 @@ const Container = styled.span`
     display: inline-block;
     padding: 10px;
     margin: 0;
-    border: 1px solid ${({ theme }) => theme.color.onBackground};
     user-select: none;
+    border-right: 1px solid ${({ theme }) => theme.color.onBackground};
   }
-  label:not(:first-child) {
-    border-left: 0;
+  span:last-of-type {
+    label {
+      border-right: 0;
+    }
   }
   input:checked + label {
     color: ${({ theme }) => theme.color.onBackgroundLight};

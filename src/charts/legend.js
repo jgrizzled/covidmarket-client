@@ -51,10 +51,10 @@ color: ${({ theme }) => theme.color.onBackgroundLight};
 opacity: 0.9;
 border-radius: 10px;
 ${({ legendX }) =>
-  legendX === 'right' && 'justify-content: flex-end; right: 50px;'}
-${({ legendX }) => legendX === 'left' && 'left: 50px;'}
-${({ legendY }) => legendY === 'top' && 'top: 0;'}
-${({ legendY }) => legendY === 'bottom' && 'bottom: 50px;'}
+  legendX === 'right' && 'justify-content: flex-end; right: 55px;'}
+${({ legendX }) => legendX === 'left' && 'left: 55px;'}
+${({ legendY }) => legendY === 'top' && 'top: 5px;'}
+${({ legendY }) => legendY === 'bottom' && 'bottom: 55px;'}
 `;
 
 const Item = styled.li`
