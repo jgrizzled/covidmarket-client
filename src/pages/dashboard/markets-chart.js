@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import propTypes from 'prop-types';
 
 import Chart from 'charts/line-chart';
 import { useMarketData } from 'data/hooks';
@@ -52,3 +53,9 @@ export default function MarketsChart({ startDay, endDay, marketDataOption }) {
     />
   );
 }
+
+MarketsChart.propTypes = {
+  startDay: propTypes.number.isRequired,
+  endDay: propTypes.number.isRequired,
+  marketDataOption: propTypes.string.isRequired
+};

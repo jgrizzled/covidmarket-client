@@ -1,6 +1,6 @@
 import App from './app';
 
-const component = <App themes={theme} />;
+const component = <App />;
 
 // smoke test
 it('renders without crashing', async () => {

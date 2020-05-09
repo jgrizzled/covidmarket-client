@@ -1,6 +1,7 @@
 // radio button selector of options
 
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 
@@ -31,6 +32,14 @@ export default function ButtonSelector({
     </Container>
   );
 }
+
+ButtonSelector.propTypes = {
+  options: propTypes.array.isRequired,
+  activeOptionValue: propTypes.oneOfType([propTypes.string, propTypes.number])
+    .isRequired,
+  setOptionValue: propTypes.func.isRequired,
+  tooltip: propTypes.string
+};
 
 const Container = styled.span`
   display: grid;

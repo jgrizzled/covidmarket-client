@@ -1,6 +1,7 @@
 // Line Chart
 
 import React, { useContext } from 'react';
+import propTypes from 'prop-types';
 import {
   VictoryChart,
   VictoryLine,
@@ -12,7 +13,7 @@ import { ThemeContext } from 'styled-components';
 
 import chartWrapper from './chart-wrapper';
 
-// chartDatas: [{data: array of {x, y}, style: Victory style obj},...]
+// chartDatas: [{data: array of {x, y}, style: Victory style obj, name: string},...]
 const LineChart = ({
   chartDatas,
   height,
@@ -102,6 +103,26 @@ const LineChart = ({
       />
     </VictoryChart>
   );
+};
+
+LineChart.propTypes = {
+  chartDatas: propTypes.arrayOf(
+    propTypes.shape({
+      data: propTypes.array.isRequired,
+      style: propTypes.object.isRequired,
+      name: propTypes.string.isRequired
+    })
+  ).isRequired,
+  height: propTypes.number.isRequired,
+  width: propTypes.number.isRequired,
+  labelX: propTypes.string,
+  labelY: propTypes.string,
+  tickFormatX: propTypes.func,
+  tickFormatY: propTypes.func,
+  scaleX: propTypes.string,
+  scaleY: propTypes.string,
+  domainX: propTypes.any,
+  domainY: propTypes.any
 };
 
 export default chartWrapper(LineChart);

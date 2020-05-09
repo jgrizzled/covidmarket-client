@@ -1,6 +1,7 @@
 // Chart legend overlay
 
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -35,6 +36,19 @@ export default function Legend({ chartDatas, legendX, legendY, tooltip }) {
     </LegendContainer>
   );
 }
+
+Legend.propTypes = {
+  chartDatas: propTypes.arrayOf(
+    propTypes.shape({
+      data: propTypes.array.isRequired,
+      style: propTypes.object.isRequired,
+      name: propTypes.string.isRequired
+    })
+  ).isRequired,
+  legendX: propTypes.string.isRequired,
+  legendY: propTypes.string.isRequired,
+  tooltip: propTypes.bool
+};
 
 const LegendContainer = styled.ul`
 pointer-events: fill;

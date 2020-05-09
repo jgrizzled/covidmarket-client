@@ -5,12 +5,7 @@ import ReactDOM from 'react-dom';
 global.ReactDOM = ReactDOM;
 import { act } from 'react-dom/test-utils';
 global.act = act;
-import renderer from 'react-test-renderer';
-global.renderer = renderer;
-import Enzyme from 'enzyme';
-global.Enzyme = Enzyme;
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() });
+
 import { ThemeProvider } from 'styled-components';
 import { MemoryRouter } from 'react-router-dom';
 

@@ -4,6 +4,10 @@ Front end client for COVID Markets - a dashboard for tracking US markets in the 
 
 COVID Markets displays historical performance of major US asset classes during past and current recessions alongside COVID19 case data, providing a single-page view for insight into the market's reaction to the pandemic. Data is updated daily.
 
+<p align="center">
+  <img src="https://github.com/jgrizzled/portfolio/raw/master/img/covidmarkets-ss-desktop.png" width="350" alt="COVID Markets screenshot">
+</p>
+
 [Live Demo](https://covidmarkets.now.sh)
 
 Technologies: React.js, Styled Components, Victory Charts, HTML5, CSS3

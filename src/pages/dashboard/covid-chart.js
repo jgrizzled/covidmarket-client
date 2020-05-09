@@ -1,4 +1,5 @@
 import React, { useMemo, useContext } from 'react';
+import propTypes from 'prop-types';
 import { ThemeContext } from 'styled-components';
 
 import Chart from 'charts/line-chart';
@@ -80,3 +81,10 @@ export default function COVIDchart({
     />
   );
 }
+
+COVIDchart.propTypes = {
+  startDate: propTypes.instanceOf(Date).isRequired,
+  endDate: propTypes.instanceOf(Date).isRequired,
+  COVIDdataOption: propTypes.string.isRequired,
+  COVIDdataType: propTypes.string.isRequired
+};
