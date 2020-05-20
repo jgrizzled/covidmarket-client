@@ -99,7 +99,7 @@ export default function Dashboard() {
         </Suspense>
         <div>
           <ToggleButton
-            title='Select COVID Case Data'
+            title='Toggle new/total COVID data'
             onClick={() =>
               setCOVIDdataType(COVIDdataType === 'TOTAL' ? 'NEW' : 'TOTAL')
             }
@@ -110,7 +110,7 @@ export default function Dashboard() {
             options={COVIDdataOptions}
             activeOptionValue={COVIDdataOption}
             setOptionValue={setCOVIDdataOption}
-            tooltip='Toggle new/total COVID data'
+            tooltip='Select COVID Case Data'
           />
         </div>
       </ChartGroup2>
