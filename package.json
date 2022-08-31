@@ -13,7 +13,7 @@
     "@testing-library/user-event": "^7.1.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "moment-timezone": "^0.5.28",
+    "moment-timezone": "^0.5.35",
     "normalize.css": "^8.0.1",
     "portfolio-tools": "desert-defi/portfolio-tools",
     "react": "^16.13.1",
